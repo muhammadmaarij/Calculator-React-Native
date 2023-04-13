@@ -6,7 +6,7 @@ const Calculator = () => {
   const [value, setValue] = useState(0);
   return (
     <View style={{flexWrap: 'wrap', backgroundColor: '#393E46', flex: 1}}>
-      <View style={{height: 100, marginTop: 150, width: 400}}>
+      <View style={{height: 100, marginTop: 70, width: 400}}>
         <Text
           style={{
             textAlign: 'right',
