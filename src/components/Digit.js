@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const Digit = ({text, bgcolor, color, width}) => {
+const Digit = ({text, bgcolor, color, width, onPress}) => {
   var text;
   switch (text) {
     case '*': {
