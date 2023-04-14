@@ -1,25 +1,12 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
+import React, {isValidElement, useState} from 'react';
 import Digit from '../components/Digit';
 
 const Calculator = () => {
-  const [value, setValue] = useState(null);
-  const [prevValue, setprevValue] = useState(null);
-  const [operator, setOperator] = useState('');
+  const [value, setValue] = useState('');
 
-  function OnHandleSubmit(prevValue, value) {
-    switch (operator) {
-      case '+':
-        prevValue = prevValue + value;
-        break;
-      case '-':
-        prevValue = prevValue - value;
-        break;
-      default:
-        prevValue;
-        // prevValue = prevValue + value;
-        break;
-    }
+  function OnHandleSubmit(value) {
+    setValue(eval(value));
   }
 
   return (
@@ -41,14 +28,18 @@ const Calculator = () => {
           justifyContent: 'space-evenly',
           marginTop: 20,
         }}>
-        <Digit text={'C'} color={'#393E46'} onPress={() => setOperator('C')} />
+        <Digit text={'C'} color={'#393E46'} onPress={() => setValue('')} />
+        <Digit text={'AC'} color={'#222831'} onPress={() => setValue('')} />
         <Digit
-          text={'AC'}
+          text={'%'}
           color={'#222831'}
-          onPress={() => setOperator('AC')}
+          onPress={() => setValue(value + '%')}
         />
-        <Digit text={'%'} color={'#222831'} onPress={() => setOperator('%')} />
-        <Digit text={'/'} color={'#222831'} onPress={() => setOperator('/')} />
+        <Digit
+          text={'/'}
+          color={'#222831'}
+          onPress={() => setValue(value + '/')}
+        />
       </View>
       <View
         style={{
@@ -56,10 +47,20 @@ const Calculator = () => {
           justifyContent: 'space-evenly',
           marginTop: 20,
         }}>
-        <Digit text={'7'} onPress={() => setValue(7)} />
-        <Digit text={'8'} onPress={() => setValue(8)} />
-        <Digit text={'9'} onPress={() => setValue(9)} />
-        <Digit text={'*'} color={'#222831'} onPress={() => setOperator('*')} />
+        <Digit
+          text={'7'}
+          onPress={() => {
+            setValue(value + 7);
+            console.log(value);
+          }}
+        />
+        <Digit text={'8'} onPress={() => setValue(value + '8')} />
+        <Digit text={'9'} onPress={() => setValue(value + '9')} />
+        <Digit
+          text={'*'}
+          color={'#222831'}
+          onPress={() => setValue(value + '*')}
+        />
       </View>
       <View
         style={{
@@ -67,10 +68,26 @@ const Calculator = () => {
           justifyContent: 'space-evenly',
           marginTop: 20,
         }}>
-        <Digit text={'4'} color={'white'} onPress={() => setValue(4)} />
-        <Digit text={'5'} color={'white'} onPress={() => setValue(5)} />
-        <Digit text={'6'} color={'white'} onPress={() => setValue(6)} />
-        <Digit text={'-'} color={'#222831'} onPress={() => setOperator('-')} />
+        <Digit
+          text={'4'}
+          color={'white'}
+          onPress={() => setValue(value + '4')}
+        />
+        <Digit
+          text={'5'}
+          color={'white'}
+          onPress={() => setValue(value + '5')}
+        />
+        <Digit
+          text={'6'}
+          color={'white'}
+          onPress={() => setValue(value + '6')}
+        />
+        <Digit
+          text={'-'}
+          color={'#222831'}
+          onPress={() => setValue(value + '-')}
+        />
       </View>
       <View
         style={{
@@ -78,10 +95,26 @@ const Calculator = () => {
           justifyContent: 'space-evenly',
           marginTop: 20,
         }}>
-        <Digit text={'1'} color={'white'} onPress={() => setValue(1)} />
-        <Digit text={'2'} color={'white'} onPress={() => setValue(2)} />
-        <Digit text={'3'} color={'white'} onPress={() => setValue(3)} />
-        <Digit text={'+'} color={'#222831'} onPress={() => setOperator('+')} />
+        <Digit
+          text={'1'}
+          color={'white'}
+          onPress={() => setValue(value + '1')}
+        />
+        <Digit
+          text={'2'}
+          color={'white'}
+          onPress={() => setValue(value + '2')}
+        />
+        <Digit
+          text={'3'}
+          color={'white'}
+          onPress={() => setValue(value + '3')}
+        />
+        <Digit
+          text={'+'}
+          color={'#222831'}
+          onPress={() => setValue(value + '+')}
+        />
       </View>
       <View
         style={{
@@ -93,14 +126,18 @@ const Calculator = () => {
           text={'0'}
           color={'white'}
           width={140}
-          onPress={() => setValue(0)}
+          onPress={() => setValue(value + '0')}
         />
-        <Digit text={'.'} color={'white'} onPress={() => setOperator('.')} />
+        <Digit
+          text={'.'}
+          color={'white'}
+          onPress={() => setValue(value + '.')}
+        />
         <Digit
           text={'='}
           color={'white'}
           bgcolor={'#222831'}
-          onPress={() => OnHandleSubmit}
+          onPress={() => OnHandleSubmit(value)}
         />
       </View>
     </View>

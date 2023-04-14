@@ -2,22 +2,6 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 const Digit = ({text, bgcolor, color, width, onPress}) => {
-  var text;
-  switch (text) {
-    case '*': {
-    }
-  }
-  if (parseInt(text) == Number) {
-    text = parseInt(text);
-  } else {
-    text;
-  }
-  var onPress;
-  if (onPress) {
-    onPress = onPress;
-  } else {
-    // onPress = 70;
-  }
   var width;
   if (width) {
     width = width;
@@ -38,10 +22,7 @@ const Digit = ({text, bgcolor, color, width, onPress}) => {
   }
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => {
-          onPress;
-        }}>
+      <TouchableOpacity onPress={onPress}>
         <View
           style={{
             height: 70,
